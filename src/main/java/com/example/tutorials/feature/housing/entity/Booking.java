@@ -26,7 +26,11 @@ public class Booking extends AbstractEntity {
     private String reference;
     private Instant bookingDate;
     private Boolean fully_paid;
+
+    @Column(name="begining_date")
     private Instant beginingDate;
+
+    @Column(name="ending_date")
     private Instant endingDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
