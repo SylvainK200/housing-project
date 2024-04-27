@@ -2,6 +2,7 @@ package com.example.tutorials.authentification.entity;
 
 
 import com.example.tutorials.util.entity.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,11 +44,13 @@ public class Role extends AbstractEntity {
     @OneToMany(mappedBy = "role")
     private List<Authorization> authorizations = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinTable(
             name = "auth_app_user_role",
             joinColumns = {@JoinColumn(name = "auth_role_id")},
             inverseJoinColumns = {@JoinColumn(name = "auth_app_user_id")}
     )
+
     private Set<AppUser> users = new HashSet<>();
 }

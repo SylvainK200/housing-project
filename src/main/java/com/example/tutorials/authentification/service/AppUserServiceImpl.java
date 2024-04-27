@@ -3,6 +3,9 @@ package com.example.tutorials.authentification.service;
 import com.example.tutorials.authentification.entity.AppUser;
 import com.example.tutorials.authentification.repository.AppUserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,4 +46,6 @@ public class AppUserServiceImpl implements AppUserService{
     public List<AppUser> findAll() {
         return appUserRepository.findAll();
     }
+
+
 }

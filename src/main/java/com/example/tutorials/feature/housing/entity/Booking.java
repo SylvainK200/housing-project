@@ -4,20 +4,18 @@ package com.example.tutorials.feature.housing.entity;
 import com.example.tutorials.authentification.entity.AppUser;
 import com.example.tutorials.util.entity.AbstractEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.Instant;
 
-@Builder
+@SuperBuilder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "hsg_booking")
-
+@EqualsAndHashCode(callSuper = false)
 public class Booking extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "hsg_booking_sequence")

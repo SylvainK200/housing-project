@@ -3,20 +3,19 @@ package com.example.tutorials.feature.housing.entity;
 import com.example.tutorials.authentification.entity.AppUser;
 import com.example.tutorials.util.entity.AbstractEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
+@SuperBuilder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "hsg_building")
+@EqualsAndHashCode(callSuper = false)
 public class Building extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "hsg_building_sequence")
@@ -30,6 +29,8 @@ public class Building extends AbstractEntity {
 
     private String description;
 
-    List<Housing> housings  = new ArrayList<>();
+    @OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
+    @Builder.Default
+    List<Housing> housings = new ArrayList<>();
 
 }

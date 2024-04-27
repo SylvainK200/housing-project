@@ -1,6 +1,7 @@
 package com.example.tutorials.authentification.service;
 
 import com.example.tutorials.authentification.entity.AppUser;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 

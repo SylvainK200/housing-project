@@ -2,6 +2,7 @@ package com.example.tutorials.feature.housing.service;
 
 import com.example.tutorials.feature.housing.entity.Building;
 import com.example.tutorials.feature.housing.repository.BuildingRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class BuildingServiceImpl implements BuildingService{
 
     private final BuildingRepository buildingRepository;

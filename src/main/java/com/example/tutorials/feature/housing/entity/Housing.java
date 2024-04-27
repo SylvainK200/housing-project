@@ -5,11 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
+@SuperBuilder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,11 +27,14 @@ public class Housing {
     // a month is considered as 30 days
     private Float pricePerMonth;
 
-    private List<Booking> bookings  = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hsg_building_id")
     private Building building;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "housing")
+    @Builder.Default
+    private List<Booking> bookings = new ArrayList<>();
 
 
 }

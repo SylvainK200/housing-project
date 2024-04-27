@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/tutorial_db
+    username: tutorials
+    password: tutorials
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+  mail:
+    host: localhost
+    port: 1025
+    username: kouemo
+    password: kouemo
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000

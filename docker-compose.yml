@@ -1,0 +1,31 @@
+services:
+  db:
+    container_name : postgres-sql-tutorials
+    image: postgres
+    environment:
+      POSTGRES_USER: tutorials
+      POSTGRES_PASSWORD: tutorials
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: tutorial_db
+
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5434:5432
+
+    networks:
+      - spring-tutorial
+    restart: unless-stopped
+
+  mail-dev:
+    container_name: mail-dev-tutorial
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+networks:
+  spring-tutorial:
+    driver: bridge
+volumes:
+  postgres:
+    driver: local
