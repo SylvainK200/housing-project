@@ -32,7 +32,7 @@ public class TutorialsApplication {
             if (roleRepository.findByName("USER").isEmpty()) {
                 Privilege privilege = Privilege.builder()
                         .name("SIMPLE_USER")
-                        .description("Access to public informations")
+                        .description("Access to public information")
                         .code("SIMPLE_USER")
                         .enabled(true)
                         .feature("simple utilisateur")
